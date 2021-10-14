@@ -1,4 +1,5 @@
 {
+  "name": "travian-xyz/internal-client",
   "require": {
     "php": "^8.0",
     "ext-json": "*",
