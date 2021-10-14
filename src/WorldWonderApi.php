@@ -1,7 +1,5 @@
 <?php
 
-declare(strict_types=1);
-
 namespace InternalClient;
 
 use Guzzle\Http\ClientInterface;
@@ -9,22 +7,34 @@ use Psr\Log\LoggerInterface;
 
 class WorldWonderApi
 {
-    public function __construct(
-        private ClientInterface $client,
-        private LoggerInterface $logger,
-    ) {
+    /**
+     * @var ClientInterface $client
+     */
+    private $client;
+
+    /**
+     * @var LoggerInterface $logger
+     */
+    private $logger;
+
+    public function __construct($client, $logger)
+    {
+        $this->client = $client;
+        $this->logger = $logger;
     }
 
     /**
+     * @return int
+     *
      * @throws \Throwable
      */
-    public function isFinished(): int
+    public function isFinished()
     {
         try {
             $url = '/is_finished';
 
             $response = $this->client->post($url);
-        } catch (\Throwable $exception) {
+        } catch (\Exception $exception) {
             $this->logger->error('Error while using internal client', [
                 'url' => $url,
                 'method' => 'post',
