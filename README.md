@@ -6,4 +6,8 @@
 $isGameFinished = (new Client())
     ->worldWonder()
     ->isFinished();
+    
+$userVillagesPopulation = (new Client())
+    ->userVillage()
+    ->getPopulationByUser($userId);
 ```
