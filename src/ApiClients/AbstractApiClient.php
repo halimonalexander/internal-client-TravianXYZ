@@ -32,7 +32,7 @@ abstract class AbstractApiClient
      *
      * @throws Exception
      */
-    public function get(string $url)
+    protected function get(string $url)
     {
         try {
             return $this->client->get($url)->getResponse();
@@ -52,7 +52,7 @@ abstract class AbstractApiClient
      *
      * @throws Exception
      */
-    public function getJson(string $url)
+    protected function getJson(string $url)
     {
         return (string) $this->get($url)->getBody();
     }
@@ -62,7 +62,7 @@ abstract class AbstractApiClient
      *
      * @throws Exception
      */
-    public function post(string $url, array $data = [])
+    protected function post(string $url, array $data = [])
     {
         try {
             return $this->client->post($url, null, $data)->getResponse();
